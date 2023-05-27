@@ -1,0 +1,129 @@
+procedure afficher :
+	-> Permet d'afficher la grille de puissance 4
+
+	
+
+paramètre :
+	-> grille(entrée), tableau à double entré
+
+
+
+
+fonction gagner : 
+	-> retourne vrai si un des joueurs a 4 pions allignés horizontalement, verticalement ou diagonalement
+	-> retourne faux sinon
+
+paramètre :
+	->joueur1(entrée), chaine de caractère
+
+résultat :
+	-> retourne un booléen
+
+
+
+
+procedure demande_ligne :
+    -demande à l'utilisateur  une ligne  entre  1 et 6.
+    -la procédure s'arrêtera quand l'utilisateur aura bien rentrer une valeur comprise entre 1 et 6	
+	 
+
+paramètre :
+	->joueur(entrée), chaine de caractère
+	-> ligne(sortie), entier
+
+
+
+
+
+procedure demande_colonne :
+    -demande à l'utilisateur  une colonne  entre  1 et 7.
+    -la procédure s'arrêtera quand l'utilisateur aura bien rentrer une valeur comprise entre 1 et 7
+	
+
+paramètre : 
+	-> joueur(entrée),chaine de caratère
+	-> colonne(sortie), entier
+	
+
+
+
+fonction vérif_case: 
+	-regarde si en-dessous de l'emplacement choisi par l'utilisateur il reste des cases vides 
+	-si une case est vide on fait i-1 jusqu'à trouver une case pas vide
+	-une fois une case pas vide trouvé, on ajoute 1 à i pour avoir l'emplacement exacte de la case vide où placer le pion.
+
+paramètre:
+	->grille(entrée), tableau à double entré
+	
+résultat:
+	-> entier,emplacement valide
+
+
+
+
+
+fonction compte_case_vide:
+    	-compte le nombre de case vide
+
+paramètre:
+	-grille(entier), tableau à double entré
+
+résultat:
+	entier,retourne le nombre de case vide 
+
+
+
+programme principal c'est
+début
+    	grille : tableau[1...6][1...7] de caractère;
+   	joueur1, joueur,2 : chaine(15);
+    	ligne, colonne : entier;
+    	i:entier;
+    	ecrireEcrans("Quelle est le nom du joueur1 ?"):
+	lireClavier(joueur1);
+	
+	ecrireEcrans("Quelle est le nom du joueur2 ?");
+	lireClavier(joueur2);
+
+	afficher_grille(entE grille);
+    
+    	tant que (gagner(entE joueur1) == faux) OU (gagner(entE joueur2) == faux) OU compte_case_vide(entE  grille) !=0 faire
+		afficher_grille(entE grille);
+		répeter
+        			demande_ligne(entE joueur1, sortE ligne);
+        			demande_colonne(entE joueur 1,sortE colonne);
+		jusqu'à(grille[ligne][colonne]=='  ')
+
+        		i := vérif_case(entE grille[ligne][colonne];
+        		grille[grille-i][colonne]='R';
+		
+
+        		si (gagner(entE joueur1) == False) alors
+		
+			afficher_grille(entE grille);
+			répeter
+        				demande_ligne(entE joueur1, sortE ligne);
+        				demande_colonne(entE joueur 1,sortE colonne);
+			jusqu'à(grille[ligne][colonne]=='  ')
+            
+            			i:=vérif_case(entE grille[ligne][colonne]);	
+            			grille[ligne-i][colonne]='J';
+		finsi
+
+           
+    	finfaire
+
+	si (gagner(entE joueur1) == vrai) alors
+		ecrireEcran("Le joueur 1 a gagné la partie");
+		afficher_grille(entE grille);
+
+	sinon si (gagner(entE joueur 2) == vrai) alors
+		ecrireEcrans("Le joueur 2 a gagné la partie");
+		afficher_grille(entE grille);
+
+	sinon 
+		ecrireEcrans("Il y a égalité");
+		afficher_grille(entE grille);
+	finsi
+
+fin

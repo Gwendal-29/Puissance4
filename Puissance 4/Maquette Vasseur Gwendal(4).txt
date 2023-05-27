@@ -1,0 +1,150 @@
+1/ 
+Pion joueur 1 = 'R' -> R pour faire rappeler la couleur rouge dans un vrai puissance 4
+Pion joueur 2 = 'J' -> J pour faire rappeler la couleur jaune dans un vrai puissance 4
+
+Voici l'affichage de la grille vide :
+
+	0 | 1 | 2 | 3 | 4 | 5 | 6
+--------------------------------		 	<- Pour choisir un emplacement le joueur
+ 0 |   |   |   |   |   |   |   |			   devra donner la ligne et la colonne 
+								   de l'endroit où il veut placer son pion.
+ 1 |   |   |   |   |   |   |   |                   
+
+ 2 |   |   |   |   |   |   |   |
+
+ 3 |   |   |   |   |   |   |   |
+
+ 4 |   |   |   |   |   |   |   |
+
+ 5 |   |   |   |   |   |   |   |
+
+
+Exemple pour le joueur 1:
+
+La console va demander au joueur 1 le numéro de la ligne puis de la colonne.
+
+Le premier message sera: "Donnez le numéro de la ligne"
+Le second message sera "Donnez le numéro de la colonne "
+
+Pour l'exemple on dira que le joueur 1 aura choisi la 5ème ligne et la colonne 6 :
+
+    0 | 1 | 2 | 3 | 4 | 5 | 6
+--------------------------------
+ 0 |   |   |   |   |   |   |   |
+
+ 1 |   |   |   |   |   |   |   |
+
+ 2 |   |   |   |   |   |   |   |
+
+ 3 |   |   |   |   |   |   |   |
+
+ 4 |   |   |   |   |   |   |   |
+
+ 5 |   |   |   |   |   |   | R | <- emplacement du pion choisi par le joueur 1
+
+
+2/
+Pour choisir l'emplacement, il faudra mettre des valeurs valides, c'est-à-dire ne pas mettre de caractère en guise de colonne ou de ligne et
+il faudra que le numéro de la ligne soit compris entre 0 et 5 et le numéro de la colonne entre 0 et 6.
+sinon le programme mettra un message d'erreur du type :
+
+"la ligne x ou la colonne y rentrée n'est/ne sont pas valide". 
+
+Puis on reposera la question pour savoir l'emplacement voulu pour le pion.
+
+
+Il faudra vérifier qu'un emplacement ne soit pas déjà utilisé :
+
+	0 | 1 | 2 | 3 | 4 | 5 | 6
+--------------------------------		
+ 0 |   |   |   |   |   |   |   |
+								  
+ 1 |   |   |   |   |   |   |   |                   
+
+ 2 |   |   |   |   |   |   |   |
+
+ 3 |   |   |   |   |   |   |   |		 	<- ici les emplacements de la ligne 5 sont remplis on ne peut donc plus rentrer de valeur dedans.
+                                                   Si un des joueurs essaye de rentrer une valeur à la ligne 5 un message d'erreur apparaîtra:
+ 4 |   |   |   |   |   |   |   |                   "L'emplacement choisi est déjà remplis par l'un des joueurs veuillez changer d'emplacement.
+                                                   Puis on reposera la question pour savoir l'emplacement voulu pour le pion.
+ 5 | R | J  | J | R | R | J | R|
+
+3/ 
+La fin de la partie surgira lorsque l'un des joueurs aura 4 pions alignés soit verticalement, horizontalement ou diagonalement.
+
+Par exemple voici une partie où le joueur 2 remporte la partie diagonalement :
+
+    0 | 1 | 2 | 3 | 4 | 5 | 6
+--------------------------------
+ 0 |   |   |   |   |   |   |   |
+
+ 1 |   |   |   |   |   |   |   |
+
+ 2 |   |   |   |   | J |   |   |
+
+ 3 |   |   |   | J | R |   |   |				<- le joueur 2 a remporté la partie en alignant 4 pions diagonalement
+
+ 4 |   |   | J | R | O |   |   |
+
+ 5 |   | J | R | R | R |   |   |
+
+Voici un exemple où le joueur 1 remporte la partie verticalement :
+
+ 0 | 1 | 2 | 3 | 4 | 5 | 6
+--------------------------------
+ 0 |   |   |   |   |   |   |   |
+
+ 1 |   |   |   |   |   |   |   |
+
+ 2 |   |   |   |   | R |   |   |
+
+ 3 |   |   |   | J | R |   |   |				<- le joueur 1 a remporté la partie en alignant 4 pions verticalement
+
+ 4 |   |   | J | J | R |   |   |
+
+ 5 |   | J | J | R | R |   |   |
+
+
+Voici un exemple où le joueur 2 remporte la partie horizontalement : 
+
+ 0 | 1 | 2 | 3 | 4 | 5 | 6
+--------------------------------
+ 0 |   |   |   |   |   |   |   |
+
+ 1 |   |   |   |   |   |   |   |
+
+ 2 |   |   |   |   |   |   |   |
+
+ 3 |   |   |   | R | R |   |   |				<- le joueur 2 a remporté la partie en alignant 4 pions horizontalement
+
+ 4 |   |   | J | R | R |   |   |
+
+ 5 |   | J | J | J | J | R |   |
+
+
+Lors de la fin de la partie la console affichera le joueur gagnant et le joueur perdant.
+
+
+4/ 
+Si lors de la partie les 42 emplacements du jeu sont remplis et qu'aucun joueur gagne, un message va s'afficher mettant fin à la partie
+et disant qu'aucun joueur n'a gagné.
+
+Voici un exemple d'une partie où il y a égalité:
+
+
+     0 | 1 | 2 | 3 | 4 | 5 | 6
+--------------------------------
+ 0 | R | J | R | J | R | R | J |
+
+ 1 | R | J | R | R | J | J | R |
+
+ 2 | J | R | J | J | R | J | J |     <- égalité car aucun des joueurs n'a 4 pions allignés verticalement, horizontalement ou diagonalement
+
+ 3 | R | J | R | J | R | J | J |				
+
+ 4 | R | J | J | R | J | R | R |
+
+ 5 | J | J | R | R | R | R | J |
+
+
+
